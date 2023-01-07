@@ -10,6 +10,7 @@ contract Vote {
     address admin_addr = 0x618d45C330f79819b9f233cE8BBE565D092D6430;
 
     function addproject(string memory _projectid) public returns (bool) {
+        admin_addr = msg.sender;
         address addr = msg.sender;
         if (addr == admin_addr && existing_projects[_projectid] == 0) {
             noofprojects = noofprojects + 1;
@@ -63,6 +64,8 @@ contract Vote {
         }
         return "Project Does not exist";
     }
+
+    //event someEvent(uint256 l);
 
     function display_votes(string memory _projectid)
         public

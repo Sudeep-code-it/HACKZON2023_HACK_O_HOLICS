@@ -1,4 +1,3 @@
-
 const express=require('express');
 const twilio=require('twilio');
 const accountSid = "AC2d2e1a3c645f164d290e202ef1484d5c";
@@ -55,14 +54,14 @@ app.post('/login',async(req,res)=>{
     if(user!=null)
     {
     console.log(user);
-    var num=100000+Math.floor(Math.random()*900000);
+    var num=123456;//100000+Math.floor(Math.random()*900000);
     var phno=user.pno;
-const client = new twilio(accountSid, authToken);
+// const client = new twilio(accountSid, authToken);
 
-await client.messages
-  .create({ body: `your OTP is - ${num}. Valid for only 5 mnutes`, from: "+12768816056", to: "+91"+phno })
-  .then(message => console.log(message.sid))
-  .catch((e)=>{console.log(e)});
+// await client.messages
+//   .create({ body: `your OTP is - ${num}. Valid for only 5 mnutes`, from: "+12768816056", to: "+91"+phno })
+//   .then(message => console.log(message.sid))
+//   .catch((e)=>{console.log(e)});
 
     await people.updateOne({"anum":anum},{$set:{"otp":num,"extime":Date.now()+30000}})
     .then(()=>{
@@ -111,7 +110,11 @@ app.post('/login/otp',async(req,res)=>{
 
         
         // blockchain connection
-
+        // cs.castvote(req.body.pid, req.body.aid, req.body.type).then((value)=>{
+        //     console.log(value)
+        // }, (error)=>{
+        //     console.log(error.toString())
+        // })
         res.json(req.body);
 
     })
@@ -120,18 +123,29 @@ app.post('/login/otp',async(req,res)=>{
 
         
         // blockchain connection
-
+        // cs.getvotes(req.body.pid).then((value)=>{
+        //     console.log(value)
+        // }, (error)=>{
+        //     console.log(error.toString())
+        // })
         res.json(req.body);
 
     })
 
     app.get("/addp",(req,res)=>{
 
+
         res.render("pages/adminaddp");
     })
 
     app.post("/addp",(req,res)=>{
         
+        // cs.addproject(req.body.pid).then((value)=>{
+        //     console.log(value)
+        // }, (error)=>{
+        //     console.log(error.toString())
+        // })
+
         res.json(req.body);
     })
 

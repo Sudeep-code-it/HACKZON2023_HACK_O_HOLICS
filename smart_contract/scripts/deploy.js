@@ -4,8 +4,8 @@ async function main() {
     const voteFactory = await ethers.getContractFactory("Vote")
     const vote = await voteFactory.deploy()
     await vote.deployed()
-    addr = vote.address;
-    console.log(addr);
+    addr = vote.address
+    console.log(addr)
 }
 
 main().then(() => {
